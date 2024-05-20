@@ -1,0 +1,63 @@
+<div class="container">
+    <h2>Gestión de Empleados</h2>
+      <!-- Añadir empleado -->
+      <div>
+        <h3>Añadir Empleado</h3>
+        <form (ngSubmit)="addEmpleado()">
+          <input [(ngModel)]="empleado.nombre" name="nombre" class="form-control my-input" placeholder="Nombre" required><br>
+          <input [(ngModel)]="empleado.direccion" class="form-control my-input" name="direccion" placeholder="Direccion" required><br>
+          <input [(ngModel)]="empleado.telefono" class="form-control my-input" name="telefono" placeholder="Telefono" required><br>
+          <input [(ngModel)]="empleado.email" name="email" class="form-control my-input" placeholder="Correo" required><br>
+          <input [(ngModel)]="empleado.password" name="password" class="form-control my-input" type="password" placeholder="Contraseña" required><br>
+          <button type="submit" class="my-button btn btn-primary col-sm-4 mt-3">Añadir</button>
+        </form>
+      </div>
+
+       <!-- Buscar empleado por ID -->
+    <div>
+      <h3>Buscar Empleado</h3>
+      <label>ID: <input [(ngModel)]="empleadoClave" name="empleadoId" type="number"></label>
+      <button (click)="buscarEmpleado()">Buscar</button>
+      <button (click)="resetTable()">Limpiar</button>
+      <div *ngIf="empleadoDetail">
+        <p><strong>Nombre:</strong> {{ empleadoDetail.nombre }}</p>
+        <p><strong>Dirección:</strong> {{ empleadoDetail.direccion }}</p>
+        <p><strong>Teléfono:</strong> {{ empleadoDetail.telefono }}</p>
+        <p><strong>Email:</strong> {{ empleadoDetail.email }}</p>
+      </div>
+      <div *ngIf="errorMessage">
+        <p>{{ errorMessage }}</p>
+      </div>
+    </div>
+  </div>
+    <!-- Lista de empleados -->
+    <div>
+      <h3>Lista de Empleados</h3>
+      <table class="tabla-empleados">
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Dirección</th>
+          <th>Teléfono</th>
+          <th>Email</th>
+          <th>Acciones</th>
+        </tr>
+        <tr *ngFor="let empleado of empleados">
+          <td>{{ empleado.clave }}</td>
+          <td>{{ empleado.nombre }}</td>
+          <td>{{ empleado.direccion }}</td>
+          <td>{{ empleado.telefono }}</td>
+          <td>{{ empleado.email }}</td>
+          <td>
+               
+                <button *ngIf="empleado.clave" (click)="deleteEmpleado(empleado.clave)">Eliminar</button>
+
+          </td>
+        </tr>
+      </table>
+    </div>
+  
+  <head>
+    <link rel="stylesheet" type="text/css" href="empleados.component.css">
+  </head>
+  

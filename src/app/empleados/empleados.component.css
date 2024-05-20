@@ -1,0 +1,57 @@
+.tabla-empleados {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .tabla-empleados th, .tabla-empleados td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .tabla-empleados th {
+    background-color: #f2f2f2;
+    color: #333;
+  }
+  
+  .tabla-empleados tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .tabla-empleados tr:hover {
+    background-color: #ddd;
+  }
+  
+
+  .my-button {
+    margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #9d00b2;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 3px 3px 3px 1px rgba(0,0,0,0.47);
+    }
+    
+    .my-button:hover {
+      background-color: #9418fa;
+    }
+    
+    .my-button:active {
+      background-color: #74006e;
+    }
+    .my-button:disabled {
+      background-color: #b7b7b7; /* Cambia el color cuando el botón está deshabilitado */
+      cursor: not-allowed; /* Cambia el cursor cuando el botón está deshabilitado */
+      color: #808080; /* Cambia el color del texto cuando el botón está deshabilitado */
+    }
+  
+    .my-input{
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 3px 3px 3px 1px rgba(0,0,0,0.47);
+      margin-bottom: 10px; 
+    }
+

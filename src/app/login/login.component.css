@@ -1,0 +1,214 @@
+.icono-circular {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 50%;
+    margin: 0 auto; /* Agregado para centrar horizontalmente */
+  }
+  
+  .icono-circular img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  /* Estilo del título */
+  h1 {
+    color: #333;
+  }
+  
+  
+  
+  form {
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+    z-index: 1;
+    justify-content: center;
+    align-items: center;
+    /* Agregar degradado de izquierda a derecha */
+    /* background: linear-gradient(to right, #cdffd8, #94b9ff); */
+    
+  }
+  
+  
+  
+  
+  /* Estilo de campos de entrada de texto */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Estilo del botón de registro */
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #aa00cc;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Estilo del botón de registro cuando está deshabilitado */
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  
+  .my-button {
+    margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #9d00b2;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 3px 3px 3px 1px rgba(0,0,0,0.47);
+    }
+    
+    .my-button:hover {
+      background-color: #9418fa;
+    }
+    
+    .my-button:active {
+      background-color: #74006e;
+    }
+    .my-button:disabled {
+      background-color: #b7b7b7; /* Cambia el color cuando el botón está deshabilitado */
+      cursor: not-allowed; /* Cambia el cursor cuando el botón está deshabilitado */
+      color: #808080; /* Cambia el color del texto cuando el botón está deshabilitado */
+    }
+  
+    .my-input{
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 3px 3px 3px 1px rgba(0,0,0,0.47);
+    }
+  
+    p.cua {font-size: 22px;
+  }
+  
+  label.cua{font-size: 15px;
+  }
+    
+  .error-message {
+    color: red;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+   /* background: linear-gradient(to bottom, #0cc0df, #ffde59); */
+  }
+  
+  .container {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  /*  background: linear-gradient(to bottom, #0cc0df, #ffde59); */
+  }
+  
+  .bubble {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 3px solid #B9E7EF;
+    border-radius: 50%;
+    background-color: #0CC0DF;
+    transition: all 50ms ease-in-out;
+    animation-name: bubble;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    z-index: 0;
+  }
+  
+  .bubble::after {
+    content: "";
+    position: absolute;
+    border-top: 2px solid #0CC0DF;
+    border-right: 0px;
+    border-bottom: 2px solid #0CC0DF;
+    border-left: 5px solid #FFF;
+    border-radius: 50%;
+    transform: translate(30%,25%);
+    height: 65%;
+    width: 40%;
+    z-index: 0;
+  }
+  
+  .bubble::before {
+    content: "";
+    position: absolute;
+    height: 10%;
+    width: 10%;
+    border-radius: 50%;
+    background-color: white;
+    z-index: 1;
+    transform: translate(270%, 80%);
+    z-index: 0;
+  }
+  
+  .b1 {height: 180px; width: 180px; animation-duration: 6s; left: 2vw}
+  .b2 {height: 90px;  width: 90px;  animation-duration: 8s; left: 20vw}
+  .b3 {height: 120px; width: 120px; animation-duration: 4s; left: 49vw}
+  .b4 {height: 80px;  width: 80px;  animation-duration: 10s; left: 61vw}
+  .b5 {height: 160px; width: 160px; animation-duration: 11s; left: 83vw}
+  .b6 {height: 50px;  width: 50px;  animation-duration: 9s; left: 50vw}
+  .b7 {height: 20px;  width: 20px;  animation-duration: 9.5s; left: 33vw}
+  
+  
+  
+  @keyframes bubble {
+    0%    {transform: translate(0vw,   100vh);}
+    20%   {transform: translate(0.9vw, 80vh);}
+    25%   {transform: translate(1vw,   75vh);}
+    30%   {transform: translate(0.9vw  70vh);}
+    50%   {transform: translate(0vw,   50vh);}
+    70%   {transform: translate(-0.9vw,30vh);}
+    75%   {transform: translate(-1vw,  25vh);}
+    80%   {transform: translate(-0.9vw,20vh);}
+    100%  {transform: translate(0vw,   0vh);}
+  }
+  
+  .bubble:active {
+    background-color: transparent;
+    border: 1px solid #FFF;
+    transform: scale(20);
+    z-index: 0;
+  }
+  
+  .bubble:active::before{
+    visibility: hidden;
+    z-index: 0;
+  }
+  
+  .bubble:active::after{
+    visibility: hidden;
+    z-index: 0;
+  }
+  
+  
+  
