@@ -14,10 +14,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { EmpleadosComponent } from './empleados/empleados.component';
+import { RegisterComponent } from './register/register.component';
+
 
   const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'empleados', component: EmpleadosComponent },
+    { path: 'register', component: RegisterComponent },
+
     { path: '', redirectTo: '/login', pathMatch: 'full' }, // Redirigir al inicio de sesión por defecto
     //{ path: '**', redirectTo: 'login' } // Redirigir a inicio de sesión para cualquier ruta desconocida
   ];

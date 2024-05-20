@@ -13,6 +13,8 @@ export class EmpleadosComponent implements OnInit {
   empleadoClave: number | null = null;
   empleadoDetail: Empleado | null = null;
   errorMessage: string | null = null;
+  empleadoSelected: Empleado | null = null;
+  showPassword: boolean = false;
 
   constructor(private empleadosService: EmpleadosService) { }
 
@@ -39,36 +41,23 @@ export class EmpleadosComponent implements OnInit {
     );
   }
 
-  deleteEmpleado(id: number): void {
-    this.empleadosService.deleteEmpleado(id).subscribe(() => {
+  deleteEmpleado(clave: number): void {
+    this.empleadosService.deleteEmpleado(clave).subscribe(() => {
       this.loadEmpleados();
     });
   }
-/*
+
+ 
   buscarEmpleado(): void {
     if (this.empleadoClave !== null) {
       this.empleadosService.getEmpleado(this.empleadoClave).subscribe(
         data => {
-          this.empleadoDetail = data;
+          this.empleados = [data];
+          this.errorMessage = null;
         },
         error => {
           this.errorMessage = 'Empleado no encontrado';
-          this.empleadoDetail = null;
-        }
-      );
-    }
-  }
-*/
-  buscarEmpleado(): void {
-    if (this.empleadoClave !== null) {
-      this.empleadosService.getEmpleado(this.empleadoClave).subscribe(
-        data => {
-          this.empleados = [data]; // Solo el registro buscado se agrega a la matriz empleados
-          this.errorMessage = null; // Limpiar el mensaje de error si lo hay
-        },
-        error => {
-          this.errorMessage = 'Empleado no encontrado';
-          this.empleados = []; // Limpiar la matriz empleados si hay un error
+          this.empleados = [];
         }
       );
     }
@@ -76,12 +65,44 @@ export class EmpleadosComponent implements OnInit {
   
   resetTable(): void {
     this.loadEmpleados();
-    this.empleadoDetail = null; // Limpiar el detalle del empleado si está visible
-    this.errorMessage = null; // Limpiar cualquier mensaje de error
+    this.resetForm();
+    this.empleadoDetail = null;
+    this.errorMessage = null;
+    this.empleadoClave = null;
+    this.empleadoSelected= null;
   }
-  
+
 
   resetForm(): void {
     this.empleado = { nombre: '', direccion: '', telefono: '', email: '', password: '' };
+  }
+
+  selectEmpleado(clave: number, empleado: Empleado): void {
+    this.empleadoSelected = { 
+      clave: clave,
+      nombre: empleado.nombre,
+      direccion: empleado.direccion,
+      telefono: empleado.telefono,
+      email: empleado.email
+    };
+    this.empleado = { ...this.empleadoSelected };
+  }
+
+  updateEmpleado(clave: number): void { 
+      this.empleadosService.updateEmpleado(clave, this.empleado).subscribe(
+        () => {
+          this.loadEmpleados();
+          this.resetForm();
+          this.empleadoSelected = null;
+        },
+        error => {
+          this.errorMessage = 'Error al actualizar empleado';
+        }
+      );
+  }
+  
+
+  toggleShowPassword(): void {
+    this.showPassword = !this.showPassword;
   }
 }

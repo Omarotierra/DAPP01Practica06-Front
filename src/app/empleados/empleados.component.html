@@ -1,63 +1,77 @@
 <div class="container">
-    <h2>Gestión de Empleados</h2>
-      <!-- Añadir empleado -->
-      <div>
-        <h3>Añadir Empleado</h3>
-        <form (ngSubmit)="addEmpleado()">
-          <input [(ngModel)]="empleado.nombre" name="nombre" class="form-control my-input" placeholder="Nombre" required><br>
-          <input [(ngModel)]="empleado.direccion" class="form-control my-input" name="direccion" placeholder="Direccion" required><br>
-          <input [(ngModel)]="empleado.telefono" class="form-control my-input" name="telefono" placeholder="Telefono" required><br>
-          <input [(ngModel)]="empleado.email" name="email" class="form-control my-input" placeholder="Correo" required><br>
-          <input [(ngModel)]="empleado.password" name="password" class="form-control my-input" type="password" placeholder="Contraseña" required><br>
-          <button type="submit" class="my-button btn btn-primary col-sm-4 mt-3">Añadir</button>
-        </form>
+  <h2>Gestión de Empleados</h2>
+  <!-- Añadir empleado -->
+  <div>
+    <h3>Añadir Empleado</h3>
+    <form (ngSubmit)="addEmpleado()">
+      <input [(ngModel)]="empleado.nombre" name="nombre" class="form-control my-input" placeholder="Nombre"
+        required><br>
+      <input [(ngModel)]="empleado.direccion" class="form-control my-input" name="direccion" placeholder="Direccion"
+        required><br>
+      <input [(ngModel)]="empleado.telefono" class="form-control my-input" name="telefono" placeholder="Telefono"
+        required><br>
+      <input [(ngModel)]="empleado.email" name="email" class="form-control my-input" placeholder="Correo" required><br>
+      <div class="row">
+        <div class="col">
+          <input [(ngModel)]="empleado.password" name="password" class="form-control my-input" type="password"
+            placeholder="Contraseña" required [type]="showPassword ? 'text' : 'password'">
+        </div>
+        <div class="col">
+          <button class="my-button btn btn-primary col-sm-4 mt-3"  type="button" (click)="toggleShowPassword()">
+            <span *ngIf="!showPassword" class="material-icons">visibility</span>
+            <span *ngIf="showPassword" class="material-icons">visibility_off</span>
+          </button>
+        </div>
       </div>
 
-       <!-- Buscar empleado por ID -->
-    <div>
-      <h3>Buscar Empleado</h3>
-      <label>ID: <input [(ngModel)]="empleadoClave" name="empleadoId" type="number"></label>
-      <button (click)="buscarEmpleado()">Buscar</button>
-      <button (click)="resetTable()">Limpiar</button>
-      <div *ngIf="empleadoDetail">
-        <p><strong>Nombre:</strong> {{ empleadoDetail.nombre }}</p>
-        <p><strong>Dirección:</strong> {{ empleadoDetail.direccion }}</p>
-        <p><strong>Teléfono:</strong> {{ empleadoDetail.telefono }}</p>
-        <p><strong>Email:</strong> {{ empleadoDetail.email }}</p>
-      </div>
-      <div *ngIf="errorMessage">
-        <p>{{ errorMessage }}</p>
-      </div>
-    </div>
+      <button type="submit" [disabled]="empleadoSelected"
+        class="my-button btn btn-primary col-sm-4 mt-3">
+        <span class="material-icons">add</span></button>
+      <button class="my-button btn btn-primary col-sm-4 mt-3" *ngIf="empleado.clave" type="button" [disabled]="!empleadoSelected"
+        (click)="updateEmpleado(empleado.clave)">
+        <span class="material-icons">upgrade</span></button>
+    </form>
   </div>
-    <!-- Lista de empleados -->
-    <div>
-      <h3>Lista de Empleados</h3>
-      <table class="tabla-empleados">
-        <tr>
-          <th>ID</th>
-          <th>Nombre</th>
-          <th>Dirección</th>
-          <th>Teléfono</th>
-          <th>Email</th>
-          <th>Acciones</th>
-        </tr>
-        <tr *ngFor="let empleado of empleados">
-          <td>{{ empleado.clave }}</td>
-          <td>{{ empleado.nombre }}</td>
-          <td>{{ empleado.direccion }}</td>
-          <td>{{ empleado.telefono }}</td>
-          <td>{{ empleado.email }}</td>
-          <td>
-               
-                <button *ngIf="empleado.clave" (click)="deleteEmpleado(empleado.clave)">Eliminar</button>
 
-          </td>
-        </tr>
-      </table>
-    </div>
-  
-  <head>
-    <link rel="stylesheet" type="text/css" href="empleados.component.css">
-  </head>
-  
+  <!-- Buscar empleado por ID -->
+  <div>
+    <h3>Buscar Empleado</h3>
+    <input [(ngModel)]="empleadoClave" class="form-control my-input" name="empleadoId" type="number" placeholder="Clave">
+    <button class="my-button btn btn-primary col-sm-4 mt-3" (click)="buscarEmpleado()">
+    <span class="material-icons">search</span></button>
+
+    <button class="my-button btn btn-primary col-sm-4 mt-3" (click)="resetTable()">
+      <span class="material-icons">cleaning_services</span></button>
+
+  </div>
+
+  <!-- Lista de empleados -->
+  <div>
+    <h3>Lista de Empleados</h3>
+    <table class="tabla-empleados">
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Dirección</th>
+        <th>Teléfono</th>
+        <th>Email</th>
+        <th>Acciones</th>
+      </tr>
+      <tr *ngFor="let empleado of empleados">
+        <td>{{ empleado.clave }}</td>
+        <td>{{ empleado.nombre }}</td>
+        <td>{{ empleado.direccion }}</td>
+        <td>{{ empleado.telefono }}</td>
+        <td>{{ empleado.email }}</td>
+        <td>
+          <button class="my-button btn btn-primary col-sm-4 mt-3" *ngIf="empleado.clave" (click)="deleteEmpleado(empleado.clave)">
+            <span class="material-icons">delete</span></button>
+          <button class="my-button btn btn-primary col-sm-4 mt-3" *ngIf="empleado.clave" (click)="selectEmpleado(empleado.clave,empleado)">
+            <span class="material-icons">bookmark_added</span></button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">

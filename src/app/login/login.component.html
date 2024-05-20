@@ -2,43 +2,16 @@
     <div class="container">
         <div class="row justify-content-center pt-5">
             <div class="col-sm-6 p-3 rounded shadow">
-<form (ngSubmit)="login()">
-    <h1 id="loginFormTitle">Inicio de Sesión</h1>
-    <input type="email" class="form-control my-input" name="email" [(ngModel)]="email" placeholder="Correo electrónico" required>
-    <input type="password" class="form-control my-input" name="password" [(ngModel)]="password" placeholder="Contraseña" required>
-    <button type="submit" class="my-button btn btn-primary col-sm-4 mt-3">Iniciar sesión</button>
-    
-  </form>
-</div>
-</div>
-  </div>
-</body>
-<!--
-<body>
-    <div class="container">
-        <div class="row justify-content-center pt-5">
-            <div class="col-sm-6 p-3 rounded shadow">
                 <form (ngSubmit)="login()">
-                    <div class="icono-circular">
-                        <img src="https://firebasestorage.googleapis.com/v0/b/mycv-omar.appspot.com/o/%E5%AD%A6%E3%81%B6.png?alt=media&token=b9614846-60d7-438d-a895-3fe1653cfcbb"
-                            alt="Icono">
-                    </div>
                     <h1 id="loginFormTitle">Inicio de Sesión</h1>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control my-input" type="email" name="email" [(ngModel)]="email"
-                            placeholder="Correo electrónico" required>
-                    <div class="forms-group mt-2">
-                        <label for="password">Contraseña</label>
-                        <input type="password" name="password" class="form-control my-input" type="password"
-                            name="password" [(ngModel)]="password" placeholder="Contraseña" required>
-                    </div>
-                    <button type="submit"
-                     class="my-button btn btn-primary col-sm-4 mt-3">
-                     Iniciar sesión</button>
+                    <input type="email" class="form-control my-input" name="email" [(ngModel)]="email"
+                        placeholder="Correo electrónico" required>
+                    <input type="password" class="form-control my-input" name="password" [(ngModel)]="password"
+                        placeholder="Contraseña" required>
+                    <button type="submit" class="my-button btn btn-primary col-sm-4 mt-3">Iniciar sesión</button>                    
+                    <button class="my-button btn btn-primary col-sm-4 mt-3" [routerLink]="['/register']">Registrarse</button>
                 </form>
             </div>
         </div>
     </div>
 </body>
--->

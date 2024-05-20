@@ -51,6 +51,8 @@ import { Empleado } from './empleado.model';
 export class EmpleadosService {
   //private apiUrl = 'http://localhost:8080/DAPP01Practica05-0.0.1-SNAPSHOT/api/v1/empleado/';
   private apiUrl = "http://localhost:8080/api/v1/empleado/";
+  private registerUrl = 'http://localhost:8080/api/v1/register';
+
 
   constructor(private http: HttpClient) { }
 
@@ -69,6 +71,15 @@ export class EmpleadosService {
   deleteEmpleado(clave: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}${clave}`);
   }
+
+  updateEmpleado(clave: number, empleado: Empleado): Observable<Empleado> {
+    return this.http.put<Empleado>(`${this.apiUrl}${clave}`, empleado);
+  }
+
+  registerEmpleado(empleado: Empleado): Observable<Empleado> {
+    return this.http.post<Empleado>(this.registerUrl, empleado);
+  }
+
 }
 
 

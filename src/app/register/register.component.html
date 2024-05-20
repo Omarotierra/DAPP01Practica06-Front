@@ -1,0 +1,37 @@
+<body>
+    <div class="container">
+        <div class="row justify-content-center pt-5">
+            <div class="col-sm-6 p-3 rounded shadow">
+                <div>
+                    <h3>Añadir Empleado</h3>
+                    <form (ngSubmit)="registerEmpleado()">
+                      <input [(ngModel)]="empleado.nombre" name="nombre" class="form-control my-input" placeholder="Nombre"
+                        required><br>
+                      <input [(ngModel)]="empleado.direccion" class="form-control my-input" name="direccion" placeholder="Direccion"
+                        required><br>
+                      <input [(ngModel)]="empleado.telefono" class="form-control my-input" name="telefono" placeholder="Telefono"
+                        required><br>
+                      <input [(ngModel)]="empleado.email" name="email" class="form-control my-input" placeholder="Correo" required><br>
+                      <div class="row">
+                        <div class="col">
+                          <input [(ngModel)]="empleado.password" name="password" class="form-control my-input" type="password"
+                            placeholder="Contraseña" required [type]="showPassword ? 'text' : 'password'">
+                        </div>
+                        <div class="col">
+                          <button class="my-button btn btn-primary col-sm-4 mt-3"  type="button" (click)="toggleShowPassword()">
+                            <span *ngIf="!showPassword" class="material-icons">visibility</span>
+                            <span *ngIf="showPassword" class="material-icons">visibility_off</span>
+                          </button>
+                        </div>
+                      </div>
+                
+                      <button type="submit" class="my-button btn btn-primary col-sm-4 mt-3">
+                        <span class="material-icons">add</span></button>
+                    </form>
+                  </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
