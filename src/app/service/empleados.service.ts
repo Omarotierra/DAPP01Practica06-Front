@@ -49,9 +49,9 @@ import { Empleado } from './empleado.model';
   providedIn: 'root'
 })
 export class EmpleadosService {
-  //private apiUrl = 'http://localhost:8080/DAPP01Practica05-0.0.1-SNAPSHOT/api/v1/empleado/';
-  private apiUrl = "http://localhost:8080/api/v1/empleado/";
-  private registerUrl = 'http://localhost:8080/api/v1/register';
+  private apiUrl = 'http://localhost:8080/DAPP01Practica05-0.0.1-SNAPSHOT/api/v1/empleado/';
+ // private apiUrl = "http://localhost:8080/api/v1/empleado/";
+  private registerUrl = 'http://localhost:8080/DAPP01Practica05-0.0.1-SNAPSHOT/api/v1/register';
 
 
   constructor(private http: HttpClient) { }

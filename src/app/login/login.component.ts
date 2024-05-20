@@ -18,15 +18,14 @@ export class LoginComponent {
     const credentials = { email: this.email, password: this.password };
 
 
-    this.http.post('http://localhost:8080/api/v1/login', credentials).subscribe(
+    this.http.post('http://localhost:8080/DAPP01Practica05-0.0.1-SNAPSHOT/api/v1/login', credentials).subscribe(
       response => {
         console.log('Inicio de sesión exitoso:', response);
-        this.authService.setCredentials(this.email, this.password); // Guardar las credenciales
-        this.router.navigate(['/empleados']); // Redirigir a la página de empleados
+        this.authService.setCredentials(this.email, this.password); 
+        this.router.navigate(['/empleados']); 
       },
       error => {
         console.error('Error al iniciar sesión:', error);
-        // Manejar el error aquí
       }
     );
   }
